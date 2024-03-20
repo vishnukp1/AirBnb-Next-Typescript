@@ -20,6 +20,7 @@
     "date-fns": "^2.29.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
+    "generate": "^0.14.0",
     "leaflet": "^1.9.3",
     "next": "13.2.4",
     "next-auth": "^4.20.1",
@@ -46,7 +47,7 @@
     "@types/react-date-range": "^1.4.4",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
-    "prisma": "^4.11.0",
+    "prisma": "^4.16.2",
     "tailwindcss": "^3.2.7"
   }
 }
