@@ -2,14 +2,13 @@
 import axios from "axios";
 import { AiFillGithub } from "react-icons/ai";
 import {FcGoogle} from "react-icons/fc"
-import { useCallback,useState } from "react";
+import { useCallback,useEffect,useState } from "react";
 import {
     FieldValues,
     SubmitHandler,
     useForm
 } from 'react-hook-form'
-import useLoginModel from "@/app/hooks/UseLoginModal";
-import useRegisterModel from "@/app/hooks/UseRegisterModal";
+
 import { error } from "console";
 import Modal from "./Modal";
 import Heading from "../Heading";
@@ -17,12 +16,13 @@ import Input from "../inputs/Input";
 import toast from "react-hot-toast";
 import Button from "../Button";
 import { signIn } from "next-auth/react";
-import LoginModal from "./LoginModal";
+
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const RegisterModal = () => {
-    const registerModel = useRegisterModel()
+    const registerModel = useRegisterModal()
     const [isLoding,setIsLoading] = useState(false)
-    const loginModal = useLoginModel()
+  
     const {
         register,
         handleSubmit,
@@ -43,7 +43,7 @@ const RegisterModal = () => {
        .then(()=>{
         toast.success('Success')
         registerModel.onClose()
-        loginModal.onOpen()
+      
        })
        .catch((error)=>{
         toast.error('Something Went Wrong')
@@ -53,7 +53,7 @@ const RegisterModal = () => {
        })
     }
     const toggle = useCallback(()=>{
-        loginModal.onOpen()
+      
         registerModel.onClose();
 
     },[])
@@ -90,6 +90,7 @@ const RegisterModal = () => {
         </div>
     )
 
+
     const footerContent = (
         <div className="flex flex-col gap-4 mt-3">
             <hr/>
@@ -110,7 +111,7 @@ const RegisterModal = () => {
                     <div>
                        Already Have An Account
                     </div>
-                    <div onClick={toggle} className="text-neutral-500 cursor-pointer hover:underline">
+                    <div onClick={registerModel.onOpen} className="text-neutral-500 cursor-pointer hover:underline">
                        Log in
                     </div>
                   </div>
@@ -123,7 +124,7 @@ const RegisterModal = () => {
     return ( 
        <Modal
        disabled = {isLoding}
-       isOpen ={registerModel.isopen}
+       isOpen ={registerModel.isOpen}
        title="Register"
        actionLabel="Continue"
        onClose={registerModel.onClose}
