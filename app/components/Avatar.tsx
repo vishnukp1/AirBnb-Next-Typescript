@@ -1,4 +1,5 @@
-import Image from "next/image";import React from "react";
+import Image from "next/image";
+import React from "react";
 
 interface AvatarProps  {
     src? : string | null | undefined
