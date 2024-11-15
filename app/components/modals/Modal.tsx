@@ -145,40 +145,34 @@ const Modal: React.FC<ModalProps> = ({
                   onClick={handleClose}
                 >
                   <IoMdClose size={18} />
-                  </button>
-                <div className="text-lg font-semibold">
-                  {title}
-                </div>
+                </button>
+                <div className="text-lg font-semibold">{title}</div>
               </div>
               {/*body*/}
-              <div className="relative p-6 flex-auto">
-                {body}
-              </div>
+              <div className="relative p-6 flex-auto">{body}</div>
               {/*footer*/}
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row gap-4 w-full">
-                    {secondaryAction && secondaryActionLabel &&(
-                <Button 
-                    outline
-                    disabled = {disabled}
-                    label={secondaryActionLabel}
-                    onClick={handleSecondaryAction}/>
-                    )}
-                    <Button 
-                    disabled = {disabled}
+                  {secondaryAction && secondaryActionLabel && (
+                    <Button
+                      outline
+                      disabled={disabled}
+                      label={secondaryActionLabel}
+                      onClick={handleSecondaryAction}
+                    />
+                  )}
+                  <Button
+                    disabled={disabled}
                     label={actionLabel}
-                    onClick={handleSubmit}/>
-
+                    onClick={handleSubmit}
+                  />
                 </div>
                 {footer}
-                
-              </div>
-            </div>
               </div>
             </div>
           </div>
-      
-     
+        </div>
+      </div>
     </>
   );
 };
